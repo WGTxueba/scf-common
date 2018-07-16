@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>scf-ui</artifactId>
+    <packaging>jar</packaging>
+    <parent>
+        <groupId>com.make.scf</groupId>
+        <artifactId>scf-common</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../scf-common</relativePath>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <webjarDir>${project.build.outputDirectory}/META-INF/resources</webjarDir>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.make.scf</groupId>
+            <artifactId>scf-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator</artifactId>
+            <version>0.30</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>requirejs</artifactId>
+            <version>2.3.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>require-css</artifactId>
+            <version>0.1.10</version>
+        </dependency>
+
+        <!--jquery依赖-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.3.1-1</version>
+        </dependency>
+
+        <!--时间格式化组件-->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>moment</artifactId>
+            <version>2.22.2</version>
+        </dependency>
+
+        <!--图标库-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>4.7.0</version>
+        </dependency>
+
+        <!--adminLTE后台模板-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>AdminLTE</artifactId>
+            <version>2.4.3</version>
+        </dependency>
+
+        <!--bootstrap-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>3.3.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>ionicons</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap-datepicker</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap-daterangepicker</artifactId>
+            <version>2.1.27</version>
+        </dependency>
+
+
+    </dependencies>
+    <build>
+        <resources>
+            <!--将resource下的webjars目录拷贝到META-INF目录，使前端可直接访问-->
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <targetPath>${webjarDir}</targetPath>
+                <includes>
+                    <include>/webjars/**</include>
+                </includes>
+            </resource>
+            <!--将resource下的templates目录拷贝到class的resources目录，使freemarker可使用-->
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <targetPath>${templatesDir}</targetPath>
+                <includes>
+                    <include>/templates/**</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+</project>
